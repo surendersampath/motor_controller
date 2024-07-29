@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/suite_1_app.dir/suite_1.c.o -o suite_1_app  ../../motor_controller/libmotor_controller.a ../../external/libUnity.a 

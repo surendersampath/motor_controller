@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <module_a.h>
+#include <motor_controller.h>
 
 int main(void)
 {

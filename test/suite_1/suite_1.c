@@ -1,6 +1,6 @@
 #include <unity.h>
 
-#include <module_a.h>
+#include <motor_controller.h>
 
 void test_AverageThreeBytes_should_AverageMidRangeValues(void)
 {

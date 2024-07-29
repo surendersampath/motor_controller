@@ -1,0 +1,34 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/cpp:debian",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "seunlanlege.action-buttons"
+        ],
+        "settings": {
+          "workbench.colorTheme": "Kimbie Dark",
+          "cmake.configureOnOpen": true,
+          "cmake.showOptionsMovedNotification": false,
+          "actionButtons": {
+            "reloadButton": null,
+            "loadNpmCommands": false,
+            "commands": [
+              {
+                "name": "Build using Cmake",
+                "singleInstance": true,
+                "color": "#af565c",
+                "command": "[[ -d build ]] || mkdir build && cd build && cmake .. && cmake --build ."
+              },
+              {
+                "name": "Run Application",
+                "singleInstance": true,
+                "color": "#4caf50",
+                "command": "cd build && ./main && cd ..",
+                "isShellCommand": true
+              }
+            ]
+          }
+        }
+      }
+    }
+  }

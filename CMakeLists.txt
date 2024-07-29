@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 
 set(TARGET_GROUP production CACHE STRING "Group to build")
 
-add_subdirectory(module_a)
+add_subdirectory(motor_controller)
 
 if(TARGET_GROUP STREQUAL production)
     add_subdirectory(main)
