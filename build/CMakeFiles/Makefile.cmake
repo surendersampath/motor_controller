@@ -14,13 +14,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake"
   "/usr/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake"
-  "/usr/share/cmake-3.25/Modules/CTest.cmake"
-  "/usr/share/cmake-3.25/Modules/CTestTargets.cmake"
-  "/usr/share/cmake-3.25/Modules/CTestUseLaunchers.cmake"
   "/usr/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/usr/share/cmake-3.25/Modules/Compiler/GNU-C.cmake"
   "/usr/share/cmake-3.25/Modules/Compiler/GNU.cmake"
-  "/usr/share/cmake-3.25/Modules/DartConfiguration.tcl.in"
   "/usr/share/cmake-3.25/Modules/Platform/Linux-GNU-C.cmake"
   "/usr/share/cmake-3.25/Modules/Platform/Linux-GNU.cmake"
   "/usr/share/cmake-3.25/Modules/Platform/Linux.cmake"
@@ -28,10 +24,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/workspaces/cmake-unity-tutorial/CMakeLists.txt"
   "CMakeFiles/3.25.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.25.1/CMakeSystem.cmake"
-  "/workspaces/cmake-unity-tutorial/external/CMakeLists.txt"
+  "/workspaces/cmake-unity-tutorial/main/CMakeLists.txt"
   "/workspaces/cmake-unity-tutorial/motor_controller/CMakeLists.txt"
-  "/workspaces/cmake-unity-tutorial/test/CMakeLists.txt"
-  "/workspaces/cmake-unity-tutorial/test/suite_1/CMakeLists.txt"
   )
 
 # The corresponding makefile is:
@@ -42,45 +36,13 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "DartConfiguration.tcl"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "motor_controller/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "external/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "test/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "test/suite_1/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "main/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/Experimental.dir/DependInfo.cmake"
-  "CMakeFiles/Nightly.dir/DependInfo.cmake"
-  "CMakeFiles/Continuous.dir/DependInfo.cmake"
-  "CMakeFiles/NightlyMemoryCheck.dir/DependInfo.cmake"
-  "CMakeFiles/NightlyStart.dir/DependInfo.cmake"
-  "CMakeFiles/NightlyUpdate.dir/DependInfo.cmake"
-  "CMakeFiles/NightlyConfigure.dir/DependInfo.cmake"
-  "CMakeFiles/NightlyBuild.dir/DependInfo.cmake"
-  "CMakeFiles/NightlyTest.dir/DependInfo.cmake"
-  "CMakeFiles/NightlyCoverage.dir/DependInfo.cmake"
-  "CMakeFiles/NightlyMemCheck.dir/DependInfo.cmake"
-  "CMakeFiles/NightlySubmit.dir/DependInfo.cmake"
-  "CMakeFiles/ExperimentalStart.dir/DependInfo.cmake"
-  "CMakeFiles/ExperimentalUpdate.dir/DependInfo.cmake"
-  "CMakeFiles/ExperimentalConfigure.dir/DependInfo.cmake"
-  "CMakeFiles/ExperimentalBuild.dir/DependInfo.cmake"
-  "CMakeFiles/ExperimentalTest.dir/DependInfo.cmake"
-  "CMakeFiles/ExperimentalCoverage.dir/DependInfo.cmake"
-  "CMakeFiles/ExperimentalMemCheck.dir/DependInfo.cmake"
-  "CMakeFiles/ExperimentalSubmit.dir/DependInfo.cmake"
-  "CMakeFiles/ContinuousStart.dir/DependInfo.cmake"
-  "CMakeFiles/ContinuousUpdate.dir/DependInfo.cmake"
-  "CMakeFiles/ContinuousConfigure.dir/DependInfo.cmake"
-  "CMakeFiles/ContinuousBuild.dir/DependInfo.cmake"
-  "CMakeFiles/ContinuousTest.dir/DependInfo.cmake"
-  "CMakeFiles/ContinuousCoverage.dir/DependInfo.cmake"
-  "CMakeFiles/ContinuousMemCheck.dir/DependInfo.cmake"
-  "CMakeFiles/ContinuousSubmit.dir/DependInfo.cmake"
   "motor_controller/CMakeFiles/motor_controller.dir/DependInfo.cmake"
-  "external/CMakeFiles/Unity.dir/DependInfo.cmake"
-  "test/suite_1/CMakeFiles/suite_1_app.dir/DependInfo.cmake"
+  "main/CMakeFiles/main.dir/DependInfo.cmake"
   )

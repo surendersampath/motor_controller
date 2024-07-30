@@ -23,7 +23,7 @@
                 "name": "Run Application",
                 "singleInstance": true,
                 "color": "#4caf50",
-                "command": "cd build && ./main && cd ..",
+                "command": "cd build && ./main/main && cd ..",
                 "isShellCommand": true
               }
             ]

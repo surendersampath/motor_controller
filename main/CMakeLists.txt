@@ -3,5 +3,5 @@ add_executable(main
 )
 
 target_link_libraries(main
-    module_a
+    motor_controller
 )

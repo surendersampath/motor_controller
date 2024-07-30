@@ -27,7 +27,7 @@ main/CMakeFiles/main.dir/main.c.o: /workspaces/cmake-unity-tutorial/main/main.c 
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
-  /workspaces/cmake-unity-tutorial/module_a/module_a.h \
+  /workspaces/cmake-unity-tutorial/motor_controller/motor_controller.h \
   /usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
@@ -52,8 +52,6 @@ main/CMakeFiles/main.dir/main.c.o: /workspaces/cmake-unity-tutorial/main/main.c 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/stdc-predef.h:
-
-/workspaces/cmake-unity-tutorial/module_a/module_a.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h:
 
@@ -84,6 +82,8 @@ main/CMakeFiles/main.dir/main.c.o: /workspaces/cmake-unity-tutorial/main/main.c 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/workspaces/cmake-unity-tutorial/motor_controller/motor_controller.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 

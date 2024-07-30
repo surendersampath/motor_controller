@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "motor_controller.h": "c"
+        "motor_controller.h": "c",
+        "stdint.h": "c",
+        "math.h": "c",
+        "stdio.h": "c"
     }
 }

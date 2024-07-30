@@ -1,9 +1,26 @@
 #include <stdio.h>
-#include <motor_controller.h>
+#include "motor_controller.h"
 
-int main(void)
+void simulateMotorMotion(uint16_t startDist, uint16_t endDist, uint8_t maxSpeed, uint8_t maxAccel)
 {
-    printf("Average of 4, 5, and 6: %d\n", AverageThreeBytes(4, 5, 6));
+    printf("Position\tVelocity\n");
+    for (uint16_t currentDist = startDist; currentDist <= endDist; currentDist++)
+    {
+        uint16_t velocity = getVelocityForMotor(startDist, endDist, currentDist, maxSpeed, maxAccel);
+        printf("%d\t\t%d\n", currentDist, velocity);
+    }
+}
+
+int main()
+{
+    // Define parameters
+    uint16_t startDist = 0;
+    uint16_t endDist = 1000;
+    uint8_t maxSpeed = 20;
+    uint8_t maxAccel = 10;
+
+    // Simulate motor motion from start to stop
+    simulateMotorMotion(startDist, endDist, maxSpeed, maxAccel);
 
     return 0;
 }
