@@ -1,8 +1,0 @@
-/workspaces/cmake-unity-tutorial/build/CMakeFiles/edit_cache.dir
-/workspaces/cmake-unity-tutorial/build/CMakeFiles/rebuild_cache.dir
-/workspaces/cmake-unity-tutorial/build/motor_controller/CMakeFiles/motor_controller.dir
-/workspaces/cmake-unity-tutorial/build/motor_controller/CMakeFiles/edit_cache.dir
-/workspaces/cmake-unity-tutorial/build/motor_controller/CMakeFiles/rebuild_cache.dir
-/workspaces/cmake-unity-tutorial/build/main/CMakeFiles/main.dir
-/workspaces/cmake-unity-tutorial/build/main/CMakeFiles/edit_cache.dir
-/workspaces/cmake-unity-tutorial/build/main/CMakeFiles/rebuild_cache.dir
