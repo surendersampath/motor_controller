@@ -36,4 +36,6 @@ ctest
 Run the test executable inside the testsuite.
 ```
 
-Note : The application executable "app" is also present at the root of the directory to view the output.
+Note : The application executable "app" is also present at the root of the directory to view the output. 
+
+To make config changes to the app, please modify main.c 
