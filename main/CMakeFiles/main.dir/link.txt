@@ -1,1 +1,1 @@
-/usr/bin/cc -rdynamic CMakeFiles/main.dir/main.c.o -o main  ../motor_controller/libmotor_controller.a 
+/usr/bin/cc -rdynamic CMakeFiles/main.dir/main.c.o -o main  ../motor_controller/libmotor_controller.a -lm 

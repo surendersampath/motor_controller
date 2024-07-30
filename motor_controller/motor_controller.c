@@ -1,49 +1,62 @@
 #include "motor_controller.h"
 #include <math.h>
 
-int8_t AverageThreeBytes(int8_t a, int8_t b, int8_t c)
+
+uint16_t getVelocityForMotor(uint16_t encoderStart, uint16_t encoderEnd, uint16_t encoderCurrent, 
+                             uint8_t maxSpeed, uint8_t maxAccel)
 {
-    return (int8_t)(((int16_t)a + (int16_t)b + (int16_t)c) / 3);
-}
+    /* The velocity that the motor should be set to. */
+    uint16_t CalculatedVelocity = 0U;
 
-uint16_t getVelocityForMotor(uint16_t startDist, uint16_t endDist, uint8_t currentDist, uint8_t maxSpeed, uint8_t maxAccel)
-{
-    // The velocity that the motor should be set to.
-    uint16_t CalculatedVelocity = 0;
-
-
-    // Distance at which the motor should start decelerating.
-    uint16_t decelDist = (maxSpeed * maxSpeed) / (2 * maxAccel);
-
-    if ( currentDist < startDist || currentDist > endDist )
+    /* Check if the motor is within the valid range */
+    if ( encoderCurrent < encoderStart || encoderCurrent > encoderEnd )
     {
         // The motor is not in the correct position.
-        CalculatedVelocity = 0;
+        // TODO : Add Error Log.
+        return 0U;
     }
 
-    //Determine the Phase of the motion.
+    /* Distance at which the motor should start decelerating. */
+    uint16_t decelDist = (maxSpeed * maxSpeed) / (2 * maxAccel);
+
+    /* Determine the Phase of the motion. */
 
     /* Phase 1: Acceleration */
-    if ( currentDist <= startDist + decelDist )
+    if ( encoderCurrent < encoderStart + decelDist )
     {   
         // Applying kinematic eqn. ( v^2 = u^2 + 2as ) 
-        uint16_t distanceTravelled = currentDist - startDist;
-        CalculatedVelocity = (uint16_t)sqrt(2 * maxAccel * distanceTravelled);
+        uint16_t distanceTravelled = encoderCurrent - encoderStart;
+        CalculatedVelocity = (uint16_t)sqrt(2.0F * maxAccel * distanceTravelled);
     }
 
     /* Phase 2: Constant Velocity */
-    else if ( currentDist <= endDist - decelDist )
+    else if ( encoderCurrent < encoderEnd - decelDist )
     {
         CalculatedVelocity = maxSpeed;
     }
 
     /* Phase 3: Deceleration */
-    else if ( currentDist > decelDist )
+    else
     {
-        // Applying kinematic eqn. ( v^2 = u^2 + 2as ) 
-        uint16_t distanceRemaining = endDist - currentDist;
-        CalculatedVelocity = (uint16_t)sqrt(2 * maxAccel * distanceRemaining);
+        /*  Applying kinematic eqn. ( v^2 = u^2 + 2as ) */
+        uint16_t distanceRemaining = encoderEnd - encoderCurrent;
+        CalculatedVelocity = (uint16_t)sqrt(2.0F * maxAccel * distanceRemaining);
     }
-    
+
+    /* Ensure that the calculated velocity does not exceed the max speed. */
+    if ( CalculatedVelocity > maxSpeed )
+    {
+        // TODO : Add Warning Log.
+        CalculatedVelocity = maxSpeed;
+    }
+
+    /* Ensure that it does not acceerate beyond end stop distance. */
+    if ( CalculatedVelocity > encoderEnd - encoderCurrent )
+    {
+        // TODO : Add Warning Log.
+        CalculatedVelocity = encoderEnd - encoderCurrent;
+    }
+
+    /* Return the calculated velocity */
     return CalculatedVelocity;
 }

@@ -1,27 +1,67 @@
 #include <unity.h>
-
+#include <math.h>
 #include <motor_controller.h>
 
-void test_AverageThreeBytes_should_AverageMidRangeValues(void)
+void test_getVelocityForMotor_should_ReturnZeroIfOutOfRange(void)
 {
-    TEST_ASSERT_EQUAL_HEX8(40, AverageThreeBytes(30, 40, 50));
-    TEST_ASSERT_EQUAL_HEX8(40, AverageThreeBytes(10, 70, 40));
-    TEST_ASSERT_EQUAL_HEX8(33, AverageThreeBytes(33, 33, 33));
+    TEST_ASSERT_EQUAL_UINT16(0, getVelocityForMotor(100, 200, 99, 50, 10));  // Below start range
+    TEST_ASSERT_EQUAL_UINT16(0, getVelocityForMotor(100, 200, 201, 50, 10)); // Above end range
 }
 
-void test_AverageThreeBytes_should_AverageHighValues(void)
+void test_getVelocityForMotor_should_CalculateAccelerationPhase(void)
 {
-    TEST_ASSERT_EQUAL_HEX8(80, AverageThreeBytes(70, 80, 90));
-    TEST_ASSERT_EQUAL_HEX8(127, AverageThreeBytes(127, 127, 127));
-    TEST_ASSERT_EQUAL_HEX8(84, AverageThreeBytes(0, 126, 126));
+    // Test within acceleration phase
+    uint16_t maxSpeed = 50;
+    uint16_t maxAccel = 10;
+    uint16_t encoderStart = 100;
+    uint16_t encoderEnd = 200;
+    uint16_t decelDist = (maxSpeed * maxSpeed) / (2 * maxAccel);
+
+    uint16_t encoderCurrent = encoderStart + decelDist / 2;
+    uint16_t expectedVelocity = (uint16_t)sqrt(2.0F * maxAccel * (encoderCurrent - encoderStart));
+    TEST_ASSERT_EQUAL_UINT16(expectedVelocity, getVelocityForMotor(encoderStart, encoderEnd, encoderCurrent, maxSpeed, maxAccel));
+}
+
+void test_getVelocityForMotor_should_CalculateConstantVelocityPhase(void)
+{
+    // Test within constant velocity phase
+    uint16_t maxSpeed = 50;
+    uint16_t maxAccel = 10;
+    uint16_t encoderStart = 100;
+    uint16_t encoderEnd = 200;
+    uint16_t decelDist = (maxSpeed * maxSpeed) / (2 * maxAccel);
+
+    uint16_t encoderCurrent = encoderStart + decelDist + 1;
+    TEST_ASSERT_EQUAL_UINT16(maxSpeed, getVelocityForMotor(encoderStart, encoderEnd, encoderCurrent, maxSpeed, maxAccel));
+
+    encoderCurrent = encoderEnd - decelDist - 1;
+    TEST_ASSERT_EQUAL_UINT16(maxSpeed, getVelocityForMotor(encoderStart, encoderEnd, encoderCurrent, maxSpeed, maxAccel));
+}
+
+void test_getVelocityForMotor_should_CalculateDecelerationPhase(void)
+{
+    // Test within deceleration phase
+    uint16_t maxSpeed = 50;
+    uint16_t maxAccel = 10;
+    uint16_t encoderStart = 100;
+    uint16_t encoderEnd = 200;
+    uint16_t decelDist = (maxSpeed * maxSpeed) / (2 * maxAccel);
+
+    uint16_t encoderCurrent = encoderEnd - decelDist / 2;
+    uint16_t distanceRemaining = encoderEnd - encoderCurrent;
+    uint16_t expectedVelocity = (uint16_t)sqrt(2.0F * maxAccel * distanceRemaining);
+    TEST_ASSERT_EQUAL_UINT16(expectedVelocity, getVelocityForMotor(encoderStart, encoderEnd, encoderCurrent, maxSpeed, maxAccel));
 }
 
 int main(void)
 {
     UNITY_BEGIN();
 
-    RUN_TEST(test_AverageThreeBytes_should_AverageMidRangeValues);
-    RUN_TEST(test_AverageThreeBytes_should_AverageHighValues);
+    RUN_TEST(test_getVelocityForMotor_should_ReturnZeroIfOutOfRange);
+    RUN_TEST(test_getVelocityForMotor_should_CalculateAccelerationPhase);
+    RUN_TEST(test_getVelocityForMotor_should_CalculateConstantVelocityPhase);
+    RUN_TEST(test_getVelocityForMotor_should_CalculateDecelerationPhase);
+
 
     return UNITY_END();
 }
