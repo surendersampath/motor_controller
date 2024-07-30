@@ -2,6 +2,12 @@
 
 ## To run the solution ->
 
+## Usage - To compile and run the project inside a code space ->
+
+1. Open the master branch on codespace.
+2. Use the custom short cuts to build and run the application.
+
+
 ## Usage - To compile and run the project inside a dev container ->
 
 1. Ensure you have Docker for Desktop Running.
@@ -16,16 +22,18 @@ cmake -DTARGET_GROUP=production ..
 cmake .. 
 cmake --build .
 
-Run the main executable inside the build.
+Run the main executable inside the build->main.
 ```
 
-## Usage - To compile and run the test suite ->
+## Usage - To compile and run the test suite using c suite ->
 ```
 mkdir build
 cd build 
 cmake -DTARGET_GROUP=test ..
 cmake .. 
-cmake --build .
+ctest
 
-Run the main executable inside the testsuite.
+Run the test executable inside the testsuite.
 ```
+
+Note : The application executable "app" is also present at the root of the directory to view the output.
